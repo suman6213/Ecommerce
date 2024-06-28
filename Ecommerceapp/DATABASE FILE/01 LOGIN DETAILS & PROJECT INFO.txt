@@ -1,0 +1,64 @@
+using System;
+
+// Define an interface
+public interface IShape
+{
+    double Area(); // Method to calculate the area
+}
+
+// Define an abstract class
+public abstract class Shape
+{
+    public abstract double Area(); // Abstract method to calculate the area
+
+    public virtual void Display()
+    {
+        Console.WriteLine("This is a shape.");
+    }
+}
+
+// Implement the interface and abstract class
+public class Rectangle : Shape, IShape
+{
+    // Properties
+    public double Length { get; set; }
+    public double Width { get; set; }
+
+    // Constructor
+    public Rectangle(double length, double width)
+    {
+        Length = length;
+        Width = width;
+    }
+
+    // Implement the abstract method from Shape
+    public override double Area()
+    {
+        return Length * Width;
+    }
+
+    // Implement the method from the interface
+    public double Area()
+    {
+        return Length * Width;
+    }
+
+    // Override the Display method from Shape
+    public override void Display()
+    {
+        Console.WriteLine($"Rectangle: Length = {Length}, Width = {Width}, Area = {Area()}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create an instance of Rectangle
+        Rectangle rectangle = new Rectangle(5, 4);
+        
+        // Call methods
+        rectangle.Display();
+        Console.WriteLine($"Area: {rectangle.Area()}");
+    }
+}
